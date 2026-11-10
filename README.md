@@ -36,18 +36,27 @@
 ### Prerequisites
 Make sure you have Python 3.11 or higher installed on your macOS, Windows, or Linux system.
 
-### 1. Clone the repository
+### 1. Install pyinstaller
 ```bash
-git clone https://github.com
-cd PyCAM
+pip install pyinstaller
 ```
 
-### 2. Install dependencies
+### 2. Install dependencies (Use this VERY line)
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Compile UI and Resources (Development stage)
+### 3. Enter this line
+```bash
+pyinstaller --noconsole --onefile   --add-data "ui_PyCAM.py:."   --add-data "resources_rc.py:."   --add-data "resources.qrc:."   --add-data "instructions.txt:."   --add-data "PyCAM.db:."   main.py
+```
+
+Or this line if you're on Windows: 
+```bash
+pyinstaller --noconsole --onefile   --add-data "ui_PyCAM.py;."   --add-data "resources_rc.py;."   --add-data "resources.qrc;."   --add-data "instructions.txt;."   --add-data "PyCAM.db;."   main.py
+```
+
+### 4. Compile UI and Resources (Development stage)
 If you modify the UI layouts in Qt Designer, regenerate the Python asset bindings:
 ```bash
 # Compile UI layout
@@ -57,9 +66,9 @@ pyside6-uic PyCAM.ui -o ui_PyCAM.py
 pyside6-rcc resources.qrc -o resources_rc.py
 ```
 
-### 4. Run the application
+### 5. Run the application
 ```bash
-PyCAM.exe
+main.exe
 ```
 
 ---
